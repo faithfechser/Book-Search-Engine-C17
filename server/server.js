@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
-
+// don't need routes anymore 
 // const routes = require('./routes');
 const {ApolloServer} = require("@apollo/server")
 const {expressMiddleware} = require("@apollo/server/express4")
