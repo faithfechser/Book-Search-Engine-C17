@@ -3,7 +3,7 @@
 
 ## Description
 
-
+Welcome to Google Books Search! Look up any book you want and receive a variety of results with the books image, author, and detailed description!
 
 ## Table of Contents
 - [Usage](#usage)
@@ -15,19 +15,20 @@
 
 ## Usage
 
-
+Use this website to search up any book you want.
+![Webpage Example](image.png)
 
 ## Installation
 
-
+Node, MongoDB, Heroku
 
 ## Credits & Contributions
 
-
+Faith Fechser
 
 ## Tests
 
-
+n/a
 
 ## Questions
 
