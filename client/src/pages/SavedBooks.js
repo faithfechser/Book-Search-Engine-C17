@@ -4,12 +4,13 @@ import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 import { getMe, deleteBook } from '../utils/API';
 import { SAVE_BOOK } from '../utils/mutations';
+import { REMOVE_BOOK } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
-  const [saveBook, { data, loading, error }] = useMutation(SAVE_BOOK);
+  const [saveBook, removeBook, { data, loading, error }] = useMutation(SAVE_BOOK, REMOVE_BOOK);
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
@@ -46,14 +47,12 @@ const SavedBooks = () => {
       return false;
     }
 
+
+
     try {
-      const response = await deleteBook(bookId, token);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const updatedUser = await response.json();
+      const response = await deleteBook({ variables: bookId, token });
+      console.log(response)
+      const updatedUser = await response.data.deleteBook();
       setUserData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
